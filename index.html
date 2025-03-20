@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prost?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000000;
+            color: #000000;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #inpt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column;
+            border: 3px solid;
+            border-image-source: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            border-image-slice: 1;
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #fata {
+            background-color: rgb(158, 5, 120);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        #baiat {
+            background-color: rgb(28, 28, 218);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        #fata,
+        #baiat {
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 0px 10px rgb(73, 73, 73);
+            margin: 10px;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff5f6d 25%, #ffc371 50%, #24c6dc 75%, #514a9d);
+            background-size: 400% 400%;
+            animation: waveAnimation 6s ease infinite;
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #main {
+            width: 60%;
+            height: 60%;
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #q {
+            margin: 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 0;
+        }
+
+        #main p {
+            margin-top: -200px;
+            text-align: center;
+            font-weight: bold;
+            color: rgb(0, 86, 156)
+        }
+
+        #butoane2 {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            align-self: center;
+        }
+
+        #da,
+        #nu {
+            background-color: rgb(158, 5, 5);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 10px;
+            margin: 0 20px 0 20px;
+        }
+
+        #txt {
+            font-size: 40px;
+            color: #ffffff;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: none;
+        }
+        #da.moved{
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="inpt">
+        <h1>baiat sau fata?</h1>
+        <p>(nu e o intrebare capacana)</p>
+        <div id="butoane">
+            <button id="fata">fata</button>
+            <button id="baiat">baiat</button>
+        </div>
+    </div>
+    <div id="main">
+
+        <h1 id="q">Ai putea afirma, cu un grad ridicat de certitudine, ca posedezi o inteligenta exceptionala,
+            caracterizata prin capacitatea de a asimila si de a sintetiza informatii complexe, de a discerne
+            nuantele subtile ale situatiilor si de a naviga cu eleganta prin provocarile intelectuale? </h1>
+        <p>hint: ai creier?</p>
+        <div id="butoane2">
+            <button id="da">da</button>
+            <button id="nu">nu</button>
+        </div>
+    </div>
+    <div id="txt">stiam 🤭</div>
+    <script>
+       function setEventListeners() {
+    const buttonFata = document.querySelector('button#fata');
+    const buttonBaiat = document.querySelector('button#baiat');
+    const divInpt = document.querySelector('div#inpt');
+    const divMain = document.querySelector('div#main');
+    const buttonDa = document.querySelector('button#da');
+    const buttonNu = document.querySelector('button#nu');
+    const txt = document.getElementById('txt');
+
+    let firstClick = true;
+
+    if (buttonFata) {
+        buttonFata.addEventListener('click', () => {
+            divInpt.style.display = 'none';
+            divMain.style.display = 'flex';
+        });
+    }
+
+    if (buttonBaiat) {
+        buttonBaiat.addEventListener('click', () => {
+            divInpt.style.display = 'none';
+            divMain.style.display = 'flex';
+        });
+    }
+
+    if (buttonDa) {
+        buttonDa.addEventListener('click', () => {
+            if (firstClick) {
+                const daLeft = buttonDa.style.left || `${buttonDa.offsetLeft}px`;
+                const daTop = buttonDa.style.top || `${buttonDa.offsetTop}px`;
+                const nuLeft = buttonNu.style.left || `${buttonNu.offsetLeft}px`;
+                const nuTop = buttonNu.style.top || `${buttonNu.offsetTop}px`;
+
+                buttonDa.style.position = 'absolute';
+                buttonNu.style.position = 'absolute';
+
+                buttonDa.style.left = nuLeft;
+                buttonDa.style.top = nuTop;
+                buttonNu.style.left = daLeft;
+                buttonNu.style.top = daTop;
+
+                firstClick = false;
+            } else {
+
+                const mainRect = divMain.getBoundingClientRect();
+                const buttonRect = buttonDa.getBoundingClientRect();
+                const maxOffset = 20;
+
+                const offsetX = Math.floor(Math.random() * (maxOffset * 2 + 1)) - maxOffset; // Random between -20 and 20
+                const offsetY = Math.floor(Math.random() * (maxOffset * 2 + 1)) - maxOffset; // Random between -20 and 20
+
+                const newLeft = buttonDa.offsetLeft + offsetX;
+                const newTop = buttonDa.offsetTop + offsetY;
+                const isWithinBoundsX =
+                    newLeft >= 0 && newLeft + buttonRect.width <= mainRect.width;
+                const isWithinBoundsY =
+                    newTop >= 0 && newTop + buttonRect.height <= mainRect.height;
+
+                if (isWithinBoundsX) {
+                    buttonDa.style.left = `${newLeft}px`;
+                }
+                if (isWithinBoundsY) {
+                    buttonDa.style.top = `${newTop}px`;
+                }
+            }
+        });
+    }
+
+    if (buttonNu) {
+        buttonNu.addEventListener('click', () => {
+            txt.style.display = "block";
+            divMain.style.display = "none";
+        });
+    }
+}
+
+setEventListeners();
+
+
+    </script>
+</body>
+
+</html>
